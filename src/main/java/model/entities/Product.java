@@ -47,6 +47,11 @@ public class Product {
     public void setPrice(Double price) {
         this.price = price;
     }
+    public void subtractFromQuantity (int productQntt) {
+        if (this.quantity >= productQntt) {
+            this.quantity -= productQntt;
+        }
+    }
 
     @Override
     public boolean equals(Object o) {
