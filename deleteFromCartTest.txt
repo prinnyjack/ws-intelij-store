@@ -1,0 +1,24 @@
+    public void deleteFromCart(int productId, int productQntt) {
+        int count = 0;
+        Iterator<Product> iterator = cart.iterator();
+        while (count < productQntt && iterator.hasNext()) {
+            Product product = iterator.next();
+            if (product.getId().equals(productId)) {
+                iterator.remove();
+                product.setQuantity(product.getQuantity() + 1); // Incrementa a quantidade do produto
+                count++;
+            }
+        }
+    }
+    public void deleteFromCart2(int productId, int productQntt) {
+        int count = 0;
+        Iterator<Product> iterator = cart.iterator();
+        while (count < productQntt && iterator.hasNext()) {
+            Product product = iterator.next();
+            if (product.getId().equals(productId)) {
+                iterator.remove();
+                count++;
+            }
+        }
+        storage.updateProduct(productId, productQntt); // Add the products back to the storage
+    }

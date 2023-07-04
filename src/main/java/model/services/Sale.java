@@ -14,19 +14,52 @@ public class Sale {
         this.cart = new ArrayList<>();
     }
 
-    public void addToCart (int productId, int productQntt) {
+    public List<Product> getCart() {
+        return cart;
+    }
+
+    public void addToCart(int productId, int productQntt) {
         for (Product x : storage.getProductList()) {
             if (x.getId() == productId && x.getQuantity() >= productQntt) {
-                for (int i=1; i<productQntt; i++) {
-                    cart.add(x);
+                Product productInCart = getProductFromCart(productId);
+                if (productInCart != null) {
+                    productInCart.setQuantityCart(productInCart.getQuantityCart() + productQntt);
+                } else {
+                    Product productToAdd = new Product(x);
+                    productToAdd.setQuantityCart(productQntt);
+                    cart.add(productToAdd);
                 }
                 x.subtractFromQuantity(productQntt);
-                if (x.getQuantity() <=0) {
-                    storage.deleteProduct(x.getId());
-                }
                 break;
             }
         }
     }
+    public void deleteFromCart(int productId, int productQntt) {
+        Product productInCart = getProductFromCart(productId);
+        if (productInCart != null && productInCart.getQuantityCart() >= productQntt) {
+            productInCart.setQuantityCart(productInCart.getQuantityCart() - productQntt);
+            Product product = storage.getProductById(productId);
+            product.addToQuantity(productQntt);
+            if (productInCart.getQuantityCart() <= 0) {
+                cart.remove(productInCart);
+            }
+        }
+    }
+
+    private Product getProductFromCart (int id) {
+        for (Product x : cart) {
+           if (x.getId() == id) {
+               return x;
+           }
+        }
+        return null;
+    }
+    public void accessCartList() {
+        for (Product product : cart) {
+            System.out.println(product.toStringCart());
+        }
+    }
+
+
 
 }

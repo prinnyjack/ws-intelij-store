@@ -8,12 +8,20 @@ public class Product {
     private String name;
     private Integer quantity;
     private Double price;
+    private Integer quantityCart;
 
     public Product(Integer id, String name, Integer quantity, Double price) {
         this.id = id;
         this.name = name;
         this.quantity = quantity;
         this.price = price;
+        this.quantityCart = 0;
+    }
+    public Product(Product other) {
+        this.id = other.id;
+        this.name = other.name;
+        this.quantity = other.quantity;
+        this.price = other.price;
     }
 
     public Integer getId() {
@@ -47,10 +55,16 @@ public class Product {
     public void setPrice(Double price) {
         this.price = price;
     }
+    public Integer getQuantityCart () {return quantityCart;}
+    public void setQuantityCart (Integer quantityCart) {this.quantityCart = quantityCart;}
+
     public void subtractFromQuantity (int productQntt) {
         if (this.quantity >= productQntt) {
             this.quantity -= productQntt;
         }
+    }
+    public void addToQuantity (int productQntt) {
+        this.quantity += productQntt;
     }
 
     @Override
@@ -71,6 +85,13 @@ public class Product {
                 "id: " + id +
                 ", name: " + name +
                 ", quantity: " + quantity +
+                ", price: " + String.format("%.3f",price);
+    }
+    public String toStringCart() {
+        return "Product= " +
+                "id: " + id +
+                ", name: " + name +
+                ", quantity: " + quantityCart +
                 ", price: " + String.format("%.3f",price);
     }
 }

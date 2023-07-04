@@ -24,28 +24,21 @@ public class Program {
         Product product3 = new Product(178, "REGATA", 10, 55.59);
         storage.addProduct(product3);
 
+        System.out.println("---------------------------ARMAZEM------------------");
         storage.accessProductList();
 
+        System.out.println("-------------------------------CART----------------------");
+        sale.addToCart(168, 3);
+        sale.addToCart(123, 1);
+        sale.accessCartList();
 
+        System.out.println("--------------------CARRINHO COM MENOS PRODUTOS-----------------");
+        sale.deleteFromCart(168, 1);
+        sale.deleteFromCart(123, 1);
+        sale.accessCartList();
 
-        System.out.println("---------------DELETE-------------- ");
-        storage.deleteProduct(153);
+        System.out.println("--------------------------ARMAZEM-------------------------------");
         storage.accessProductList();
-
-        System.out.println("-------------UPDATE--------------");
-        storage.updateProduct(123, "CARRO", 1, 52.000);
-        storage.accessProductList();
-        System.out.println("----------------LISTA POR NOME DE PRODUTO----------------");
-        storage.accessProductListByName("regata");
-        System.out.println("---------------------LISTA POR INICIAL---------------");
-        storage.accessProductList("R");
-        System.out.println("-------------------------CARRINHO------------------------");
-
-        sale.addToCart(168, 6);
-        storage.accessProductList();
-
-
-
 
         sc.close();
     }
