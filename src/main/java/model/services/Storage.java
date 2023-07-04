@@ -18,6 +18,10 @@ public class Storage {
         return productList;
     }
 
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
+    }
+
     public void addProduct(Product product) {
         productList.add(product);
     }
@@ -44,6 +48,17 @@ public class Storage {
             }
         }
     }
+    public void updateProduct (int id, int quantity) {
+        Iterator<Product> iterator = productList.iterator();
+        while (iterator.hasNext()) {
+            Product product = iterator.next();
+            if (product.getId().equals(id)) {
+                product.setQuantity(quantity);
+            }
+        }
+
+    }
+
     public void accessProductList() {
         for (Product product : productList) {
             System.out.println(product);
@@ -67,6 +82,14 @@ public class Storage {
             }
         }
 
+    }
+    public Product getProductById (int id) {
+        for (Product x : productList) {
+            if (x.getId() == id) {
+                return x;
+            }
+        }
+        return null;
     }
 
 }

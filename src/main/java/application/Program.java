@@ -1,6 +1,7 @@
 package application;
 
 import model.entities.Product;
+import model.services.Sale;
 import model.services.Storage;
 
 import java.util.Locale;
@@ -12,6 +13,7 @@ public class Program {
         Scanner sc= new Scanner(System.in);
 
         Storage storage = new Storage();
+        Sale sale = new Sale(storage);
 
         Product product0 = new Product (123, "TV", 2, 2.500);
         storage.addProduct(product0);
@@ -22,21 +24,21 @@ public class Program {
         Product product3 = new Product(178, "REGATA", 10, 55.59);
         storage.addProduct(product3);
 
+        System.out.println("---------------------------ARMAZEM------------------");
         storage.accessProductList();
 
-        System.out.println("---------------DELETE-------------- ");
-        storage.deleteProduct(153);
-        storage.accessProductList();
+        System.out.println("-------------------------------CART----------------------");
+        sale.addToCart(168, 3);
+        sale.addToCart(123, 1);
+        sale.accessCartList();
 
-        System.out.println("-------------UPDATE--------------");
-        storage.updateProduct(123, "CARRO", 1, 52.000);
+        System.out.println("--------------------CARRINHO COM MENOS PRODUTOS-----------------");
+        sale.deleteFromCart(168, 1);
+        sale.deleteFromCart(123, 1);
+        sale.accessCartList();
+
+        System.out.println("--------------------------ARMAZEM-------------------------------");
         storage.accessProductList();
-        System.out.println("-------------LISTA ATE ESSE MOMENTO-------------");
-        storage.accessProductList();
-        System.out.println("----------------LISTA POR NOME DE PRODUTO----------------");
-        storage.accessProductListByName("regata");
-        System.out.println("---------------------LISTA POR INICIAL---------------");
-        storage.accessProductList("R");
 
         sc.close();
     }
