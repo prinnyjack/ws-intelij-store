@@ -58,8 +58,15 @@ public class Sale {
         for (Product product : cart) {
             System.out.println(product.toStringCart());
         }
+        System.out.println("Total Price: " + String.format("%.2f",getCartTotalPrice()));
     }
-
+    public Double getCartTotalPrice() {
+        Double totalPrice = 0.0;
+        for (Product product : cart) {
+            totalPrice += product.getTotalPrice();
+        }
+        return totalPrice;
+    }
 
 
 }

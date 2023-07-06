@@ -10,6 +10,7 @@ public class Product {
     private Double price;
     private Integer quantityCart;
 
+
     public Product(Integer id, String name, Integer quantity, Double price) {
         this.id = id;
         this.name = name;
@@ -55,8 +56,11 @@ public class Product {
     public void setPrice(Double price) {
         this.price = price;
     }
+
     public Integer getQuantityCart () {return quantityCart;}
+
     public void setQuantityCart (Integer quantityCart) {this.quantityCart = quantityCart;}
+
 
     public void subtractFromQuantity (int productQntt) {
         if (this.quantity >= productQntt) {
@@ -65,6 +69,9 @@ public class Product {
     }
     public void addToQuantity (int productQntt) {
         this.quantity += productQntt;
+    }
+    public Double getTotalPrice () {
+        return price * quantityCart;
     }
 
     @Override
@@ -92,6 +99,7 @@ public class Product {
                 "id: " + id +
                 ", name: " + name +
                 ", quantity: " + quantityCart +
-                ", price: " + String.format("%.3f",price);
+                ", price: " + String.format("%.2f",getTotalPrice());
     }
+
 }
