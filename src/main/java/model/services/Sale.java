@@ -58,6 +58,7 @@ public class Sale {
         for (Product product : cart) {
             System.out.println(product.toStringCart());
         }
+<<<<<<< HEAD
         System.out.println("Total Price: " + String.format("%.2f",getCartTotalPrice()));
     }
     public Double getCartTotalPrice() {
@@ -69,4 +70,10 @@ public class Sale {
     }
 
 
+=======
+    }
+
+
+
+>>>>>>> 7409498e2502146f748595431861c03d44836161
 }

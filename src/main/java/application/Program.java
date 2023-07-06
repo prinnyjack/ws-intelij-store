@@ -27,6 +27,7 @@ public class Program {
 
         System.out.println("-------------------------------CART----------------------");
         sale.addToCart(168, 3);
+<<<<<<< HEAD
         sale.addToCart(123, 2);
         sale.accessCartList();
 
@@ -40,6 +41,18 @@ public class Program {
         System.out.println("--------------------------ARMAZEM-------------------------------");
         storage.accessProductList();
 
+=======
+        sale.addToCart(123, 1);
+        sale.accessCartList();
+
+        System.out.println("--------------------CARRINHO COM MENOS PRODUTOS-----------------");
+        sale.deleteFromCart(168, 1);
+        sale.deleteFromCart(123, 1);
+        sale.accessCartList();
+
+        System.out.println("--------------------------ARMAZEM-------------------------------");
+        storage.accessProductList();
+>>>>>>> 7409498e2502146f748595431861c03d44836161
 
         sc.close();
     }

@@ -9,7 +9,10 @@ public class Product {
     private Integer quantity;
     private Double price;
     private Integer quantityCart;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7409498e2502146f748595431861c03d44836161
 
     public Product(Integer id, String name, Integer quantity, Double price) {
         this.id = id;
@@ -56,6 +59,17 @@ public class Product {
     public void setPrice(Double price) {
         this.price = price;
     }
+    public Integer getQuantityCart () {return quantityCart;}
+    public void setQuantityCart (Integer quantityCart) {this.quantityCart = quantityCart;}
+
+    public void subtractFromQuantity (int productQntt) {
+        if (this.quantity >= productQntt) {
+            this.quantity -= productQntt;
+        }
+    }
+    public void addToQuantity (int productQntt) {
+        this.quantity += productQntt;
+    }
 
     public Integer getQuantityCart () {return quantityCart;}
 
@@ -99,7 +113,12 @@ public class Product {
                 "id: " + id +
                 ", name: " + name +
                 ", quantity: " + quantityCart +
+<<<<<<< HEAD
                 ", price: " + String.format("%.2f",getTotalPrice());
     }
 
+=======
+                ", price: " + String.format("%.3f",price);
+    }
+>>>>>>> 7409498e2502146f748595431861c03d44836161
 }
