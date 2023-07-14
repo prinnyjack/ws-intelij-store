@@ -18,6 +18,7 @@ public class Product {
         this.price = price;
         this.quantityCart = 0;
     }
+
     public Product(Product other) {
         this.id = other.id;
         this.name = other.name;
@@ -57,20 +58,26 @@ public class Product {
         this.price = price;
     }
 
-    public Integer getQuantityCart () {return quantityCart;}
+    public Integer getQuantityCart() {
+        return quantityCart;
+    }
 
-    public void setQuantityCart (Integer quantityCart) {this.quantityCart = quantityCart;}
+    public void setQuantityCart(Integer quantityCart) {
+        this.quantityCart = quantityCart;
+    }
 
 
-    public void subtractFromQuantity (int productQntt) {
+    public void subtractFromQuantity(int productQntt) {
         if (this.quantity >= productQntt) {
             this.quantity -= productQntt;
         }
     }
-    public void addToQuantity (int productQntt) {
+
+    public void addToQuantity(int productQntt) {
         this.quantity += productQntt;
     }
-    public Double getTotalPrice () {
+
+    public Double getTotalPrice() {
         return price * quantityCart;
     }
 
@@ -92,14 +99,15 @@ public class Product {
                 "id: " + id +
                 ", name: " + name +
                 ", quantity: " + quantity +
-                ", price: " + String.format("%.3f",price);
+                ", price: " + String.format("%.3f", price);
     }
+
     public String toStringCart() {
         return "Product= " +
                 "id: " + id +
                 ", name: " + name +
                 ", quantity: " + quantityCart +
-                ", price: " + String.format("%.2f",getTotalPrice());
+                ", price: " + String.format("%.2f", getTotalPrice());
     }
 
 }

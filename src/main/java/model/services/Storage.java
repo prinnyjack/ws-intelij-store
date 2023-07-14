@@ -26,6 +26,10 @@ public class Storage {
         productList.add(product);
     }
 
+    public void addProduct(String name, double price, int quantity, int id) {
+        productList.add(new Product(id, name, quantity, price));
+    }
+
     public void deleteProduct(Integer id) {
         Iterator<Product> iterator = productList.iterator();
         while (iterator.hasNext()) {
@@ -48,7 +52,8 @@ public class Storage {
             }
         }
     }
-    public void updateProduct (int id, int quantity) {
+
+    public void updateProduct(int id, int quantity) {
         Iterator<Product> iterator = productList.iterator();
         while (iterator.hasNext()) {
             Product product = iterator.next();
@@ -64,15 +69,17 @@ public class Storage {
             System.out.println(product);
         }
     }
+
     public void accessProductList(String charactere) {
         Iterator<Product> iterator = productList.iterator();
         while (iterator.hasNext()) {
             Product product = iterator.next();
-           if(product.getName().charAt(0) == charactere.charAt(0)) {
-               System.out.println(product);
-           }
+            if (product.getName().charAt(0) == charactere.charAt(0)) {
+                System.out.println(product);
+            }
         }
     }
+
     public void accessProductListByName(String name) {
         Iterator<Product> iterator = productList.iterator();
         while (iterator.hasNext()) {
@@ -83,7 +90,8 @@ public class Storage {
         }
 
     }
-    public Product getProductById (int id) {
+
+    public Product getProductById(int id) {
         for (Product x : productList) {
             if (x.getId() == id) {
                 return x;
