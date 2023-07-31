@@ -1,0 +1,12 @@
+    public void addToCart (int productId, int productQntt) {
+        for (Product x : storage.getProductList()) {
+            if (x.getId() == productId && x.getQuantity() >= productQntt) {
+                for (int i=1; i<=productQntt; i++) {
+                    Product productToAdd = new Product(x.getId(), x.getName(), 1, x.getPrice());
+                    cart.add(productToAdd);
+                }
+                x.subtractFromQuantity(productQntt);
+                break;
+            }
+        }
+    }

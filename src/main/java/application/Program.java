@@ -1,9 +1,9 @@
 package application;
 
 public class Program {
-    public static void main(String[] args) {
-        StoreManager manager = new StoreManager();
-        manager.run();
+        public static void main(String[] args) {
+                StoreManager manager = new StoreManager();
+                manager.run();
 //        Scanner sc= new Scanner(System.in);
 //
 //        Storage storage = new Storage();
@@ -38,5 +38,5 @@ public class Program {
 //
 //
 //        sc.close();
-    }
+        }
 }

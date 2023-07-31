@@ -1,0 +1,28 @@
+    public void updateCart(int productId, int productQntt) {
+        for (Product x : storage.getProductList()) {
+            if (x.getId() == productId && x.getQuantity() >= productQntt) {
+                Product productInCart = null;
+                for (Product cartProduct : cart) {
+                    if (cartProduct.getId() == productId) {
+                        productInCart = cartProduct;
+                        break;
+                    }
+                }
+                if (productInCart != null) {
+                    productInCart.setQuantityCart(productInCart.getQuantityCart() + productQntt);
+                    if(productQntt <= 0) {
+                        cart.remove(productInCart);
+                    }
+                } else {
+                    Product productToAdd = new Product(x);
+                    productToAdd.setQuantityCart(productQntt);
+                    cart.add(productToAdd);
+                    if (productQntt <= 0) {
+                        cart.remove(productToAdd);
+                    }
+                }
+                x.subtractFromQuantity(productQntt);
+                break;
+            }
+        }
+    }
